@@ -6,14 +6,14 @@ const app = express()
 app.use(express.json())
 const mysql = require("mysql")
 require("dotenv").config()
-const port = process.env.PORT
+// const port = process.env.PORT
 const db = mysql.createPool({
    connectionLimit: 100,
    host: process.env.DB_HOST,
    user: process.env.DB_USER,
    password: process.env.DB_PASSWORD,
    database: process.env.DB_DATABASE,
-   port: process.env.DB_PORT
+   // port: process.env.DB_PORT
 })
 const db2 = require('./db');
 db.getConnection( (err, connection)=> {
@@ -21,8 +21,8 @@ db.getConnection( (err, connection)=> {
    console.log ("DB connected successful: " + connection.threadId)
 })
 
-app.listen(port, ()=> console.log(`Server Started on port ${port}...`))
-
+// app.listen(port, ()=> console.log(`Server Started on port ${port}...`))
+app.listen()
  async function sendEmail({ to, subject, html, from = process.env.EMAIL_FROM }) {
   
    
